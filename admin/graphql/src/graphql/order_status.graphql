@@ -1,0 +1,70 @@
+# import PaginatorParts from './paginator.fragment.graphql'
+
+query OrderStatuses(
+  $text: String
+  $language: String
+  $first: Int
+  $page: Int
+  $orderBy: [QueryOrderStatusesOrderByOrderByClause!]
+) {
+  orderStatuses(
+    first: $first
+    language: $language
+    page: $page
+    text: $text
+    orderBy: $orderBy
+  ) {
+    data {
+      id
+      slug
+      name
+      color
+      serial
+      language
+      translated_languages
+    }
+    paginatorInfo {
+      ...PaginatorParts
+    }
+  }
+}
+
+query OrderStatus($slug: String, $language: String) {
+  orderStatus(slug: $slug, language: $language) {
+    id
+    name
+    color
+    slug
+    serial
+    language
+    translated_languages
+  }
+}
+
+mutation CreateOrderStatus($input: CreateOrderStatusInput!) {
+  createOrderStatus(input: $input) {
+    id
+    name
+    slug
+    color
+    serial
+  }
+}
+mutation UpdateOrderStatus($input: UpdateOrderStatusInput!) {
+  updateOrderStatus(input: $input) {
+    id
+    name
+    color
+    slug
+    serial
+  }
+}
+mutation DeleteOrderStatus($id: ID!) {
+  deleteOrderStatus(id: $id) {
+    id
+    name
+    slug
+    color
+    serial
+  }
+}
