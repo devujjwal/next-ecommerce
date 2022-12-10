@@ -27,6 +27,7 @@ import { QuestionModule } from './questions/questions.module';
 import { WishlistsModule } from './wishlists/wishlists.module';
 import { ReportsModule } from './reports/reports.module';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
     UsersModule,
@@ -57,6 +58,16 @@ import { FeedbackModule } from './feedbacks/feedbacks.module';
     WishlistsModule,
     ReportsModule,
     FeedbackModule,
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'root',
+      database: 'test',
+      entities: [],
+      synchronize: false,
+    }),
   ],
   controllers: [],
   providers: [],
