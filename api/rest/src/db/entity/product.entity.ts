@@ -47,6 +47,6 @@ export class Product {
   @Column()
   image_url: string;
 
-  @Column()
+  @Column('text', { array: true })
   images_url: string[];
 }
