@@ -1,25 +1,28 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Order {
+export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  customerId: number;
+  name: string;
 
   @Column()
-  addressId: number;
+  slug: string;
 
   @Column()
-  shippingCost: number;
+  parent?: Category;
 
   @Column()
-  amount: number;
+  children?: Category[];
 
   @Column()
-  total: number;
+  details?: string;
 
-  @Column('int', { array: true })
-  orderProductIds: number[];
+  @Column()
+  icon?: string;
+
+  @Column()
+  language: string;
 }
