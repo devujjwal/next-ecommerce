@@ -7,6 +7,8 @@ import {
   Delete,
   Query,
   Put,
+  HttpStatus,
+  Res,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -20,8 +22,9 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
-  createProduct(@Body() createProductDto: CreateProductDto) {
-    return this.productsService.create(createProductDto);
+  async createProduct(@Res() res, @Body() createProductDto: CreateProductDto) {
+    await this.productsService.create(createProductDto);
+    return res.status(HttpStatus.CREATED).send();
   }
 
   @Get()

@@ -25,6 +25,10 @@ import {
 } from './dto/create-order-status.dto';
 import { GetOrderFilesDto } from './dto/get-downloads.dto';
 import Fuse from 'fuse.js';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { Order as OrderEntity } from '../db/entity/order.entity';
 
 const orders = plainToClass(Order, ordersJson);
 const orderStatus = plainToClass(OrderStatus, orderStatusJson);
@@ -39,12 +43,16 @@ const orderFiles = plainToClass(OrderFiles, orderFilesJson);
 
 @Injectable()
 export class OrdersService {
+  constructor(
+    @InjectRepository(OrderEntity)
+    private ordersRepository: Repository<OrderEntity>,
+  ) {}
   private orders: Order[] = orders;
   private orderStatus: OrderStatus[] = orderStatus;
   private orderFiles: OrderFiles[] = orderFiles;
 
-  create(createOrderInput: CreateOrderDto) {
-    return this.orders[0];
+  async create(createOrderInput: CreateOrderDto) {
+    return await this.ordersRepository.insert({});
   }
 
   getOrders({
