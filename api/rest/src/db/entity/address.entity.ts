@@ -22,4 +22,7 @@ export class Address {
 
   @Column()
   street_address: string;
+
+  @Column()
+  customer_id: number;
 }

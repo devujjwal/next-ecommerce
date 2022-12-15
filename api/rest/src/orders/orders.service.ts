@@ -16,10 +16,6 @@ import {
   OrderStatusPaginator,
 } from './dto/get-order-statuses.dto';
 import {
-  CheckoutVerificationDto,
-  VerifiedCheckoutData,
-} from './dto/verify-checkout.dto';
-import {
   CreateOrderStatusDto,
   UpdateOrderStatusDto,
 } from './dto/create-order-status.dto';
@@ -52,7 +48,7 @@ export class OrdersService {
   private orderFiles: OrderFiles[] = orderFiles;
 
   async create(createOrderInput: CreateOrderDto) {
-    return await this.ordersRepository.insert({});
+    return this.ordersRepository.save(createOrderInput);
   }
 
   getOrders({
@@ -155,7 +151,7 @@ export class OrdersService {
     return `This action removes a #${id} order`;
   }
 
-  verifyCheckout(input: CheckoutVerificationDto): VerifiedCheckoutData {
+  verifyCheckout(input) {
     return {
       total_tax: 0,
       shipping_charge: 0,

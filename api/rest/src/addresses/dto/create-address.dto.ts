@@ -1,11 +1,4 @@
-import { PickType } from '@nestjs/swagger';
-import { Address } from '../entities/address.entity';
+import { OmitType } from '@nestjs/swagger';
+import { Address } from '../../db/entity/address.entity';
 
-export class CreateAddressDto extends PickType(Address, [
-  'title',
-  'type',
-  'default',
-  'address',
-]) {
-  'customer_id': number;
-}
+export class CreateAddressDto extends OmitType(Address, ['id']) {}

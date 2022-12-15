@@ -39,7 +39,7 @@ export class ProductsService {
   private products: any = products;
 
   async create(createProductDto: CreateProductDto) {
-    return await this.productsRepository.insert(createProductDto);
+    return this.productsRepository.save(createProductDto);
   }
 
   async getProducts({
