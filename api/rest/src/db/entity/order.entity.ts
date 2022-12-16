@@ -1,4 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  JoinColumn,
+  OneToOne,
+  ManyToOne,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
+import { Address } from './address.entity';
+import { OrderDetails } from './order-details.entity';
 
 @Entity()
 export class Order {
@@ -8,8 +20,9 @@ export class Order {
   @Column()
   customerId: number;
 
-  @Column()
-  addressId: number;
+  @ManyToOne(() => Address, (address) => address.id, { cascade: true })
+  @JoinColumn()
+  address: Address;
 
   @Column()
   shippingCost: number;
@@ -20,6 +33,9 @@ export class Order {
   @Column()
   total: number;
 
-  @Column('int', { array: true })
-  orderProductIds: number[];
+  @ManyToMany(() => OrderDetails, (orderDetails) => orderDetails.id, {
+    cascade: true,
+  })
+  @JoinTable()
+  orderDetails: OrderDetails[];
 }

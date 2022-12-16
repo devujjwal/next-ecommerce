@@ -33,9 +33,9 @@ import { ReportsModule } from './reports/reports.module';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
 
 import { Product } from './db/entity/product.entity';
-import { OrderProducts } from './db/entity/order-products.entity';
-import { Address } from './addresses/entities/address.entity';
-import { Order } from './orders/entities/order.entity';
+import { OrderDetails } from './db/entity/order-details.entity';
+import { Address } from './db/entity/address.entity';
+import { Order } from './db/entity/order.entity';
 import { Category } from './db/entity/category.entity';
 
 @Module({
@@ -76,7 +76,7 @@ import { Category } from './db/entity/category.entity';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Product, Address, Order, OrderProducts, Category],
+      entities: [Product, Address, Order, OrderDetails, Category],
       synchronize: true,
     }),
   ],

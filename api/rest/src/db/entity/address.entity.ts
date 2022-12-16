@@ -1,4 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+  OneToOne,
+  ManyToMany,
+  OneToMany,
+} from 'typeorm';
+import { Order } from './order.entity';
 
 @Entity()
 export class Address {
@@ -25,4 +35,8 @@ export class Address {
 
   @Column()
   customer_id: number;
+
+  @OneToMany(() => Order, (order) => order.id, { cascade: true })
+  @JoinColumn()
+  order: Order;
 }

@@ -1,11 +1,7 @@
 import { OmitType } from '@nestjs/swagger';
 import { Order } from '../../db/entity/order.entity';
-import { CreateAddressDto } from '../../addresses/dto/create-address.dto';
-import { OrderProducts } from 'src/db/entity/order-products.entity';
+import { OrderDetails } from 'src/db/entity/order-details.entity';
 
-export class CreateOrderDto extends OmitType(Order, ['id']) {
-  address: CreateAddressDto;
-  orderProducts: CreateOrderProductsDto;
-}
+export class CreateOrderDto extends OmitType(Order, ['id']) {}
 
-export class CreateOrderProductsDto extends OmitType(OrderProducts, ['id']) {}
+export class CreateOrderProductsDto extends OmitType(OrderDetails, ['id']) {}
