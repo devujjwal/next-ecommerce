@@ -7,8 +7,11 @@ import {
   OrdersController,
   OrderStatusController,
 } from './orders.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Order } from 'src/db/entity/order.entity';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([Order])],
   controllers: [
     OrdersController,
     OrderStatusController,

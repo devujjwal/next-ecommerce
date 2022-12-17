@@ -8,6 +8,10 @@ import { paginate } from 'src/common/pagination/paginate';
 import productsJson from '@db/products.json';
 import Fuse from 'fuse.js';
 import { GetPopularProductsDto } from './dto/get-popular-products.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { Product as ProductEntity } from '../db/entity/product.entity';
 
 const products = plainToClass(Product, productsJson);
 
@@ -28,44 +32,52 @@ const fuse = new Fuse(products, options);
 
 @Injectable()
 export class ProductsService {
+  constructor(
+    @InjectRepository(ProductEntity)
+    private productsRepository: Repository<ProductEntity>,
+  ) {}
   private products: any = products;
 
-  create(createProductDto: CreateProductDto) {
-    return this.products[0];
+  async create(createProductDto: CreateProductDto) {
+    return this.productsRepository.save(createProductDto);
   }
 
-  getProducts({ limit, page, search }: GetProductsDto): ProductPaginator {
+  async getProducts({
+    limit,
+    page,
+    search,
+  }: GetProductsDto): Promise<ProductPaginator> {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    let data: Product[] = this.products;
-    if (search) {
-      const parseSearchParams = search.split(';');
-      const searchText: any = [];
-      for (const searchParam of parseSearchParams) {
-        const [key, value] = searchParam.split(':');
-        // TODO: Temp Solution
-        if (key !== 'slug') {
-          searchText.push({
-            [key]: value,
-          });
-        }
-      }
-
-      data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
-    }
-
-    const results = data.slice(startIndex, endIndex);
+    // let data: Product[] = this.products;
+    const response = await this.productsRepository.find();
     const url = `/products?search=${search}&limit=${limit}`;
+    const results = response.slice(startIndex, endIndex);
     return {
       data: results,
-      ...paginate(data.length, page, limit, results.length, url),
+      ...paginate(response.length, page, limit, response.length, url),
     };
+    // if (search) {
+    //   const parseSearchParams = search.split(';');
+    //   const searchText: any = [];
+    //   for (const searchParam of parseSearchParams) {
+    //     const [key, value] = searchParam.split(':');
+    //     // TODO: Temp Solution
+    //     if (key !== 'slug') {
+    //       searchText.push({
+    //         [key]: value,
+    //       });
+    //     }
+    //   }
+
+    //   data = fuse
+    //     .search({
+    //       $and: searchText,
+    //     })
+    //     ?.map(({ item }) => item);
+    // }
   }
 
   getProductBySlug(slug: string): Product {

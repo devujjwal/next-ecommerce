@@ -1,6 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { CommonModule } from './common/common.module';
+import { ConfigModule } from '@nestjs/config';
+
+import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 import { CategoriesModule } from './categories/categories.module';
@@ -27,46 +31,51 @@ import { QuestionModule } from './questions/questions.module';
 import { WishlistsModule } from './wishlists/wishlists.module';
 import { ReportsModule } from './reports/reports.module';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Product } from './products/entities/product.entity';
+import { Product } from './db/entity/product.entity';
+import { OrderDetails } from './db/entity/order-details.entity';
+import { Address } from './db/entity/address.entity';
+import { Order } from './db/entity/order.entity';
+import { Category } from './db/entity/category.entity';
+
 @Module({
   imports: [
-    UsersModule,
+    ConfigModule.forRoot(),
+    // UsersModule,
     CommonModule,
     ProductsModule,
     OrdersModule,
     CategoriesModule,
-    AnalyticsModule,
-    AttributesModule,
-    ShippingsModule,
-    TaxesModule,
-    TagsModule,
-    ShopsModule,
-    TypesModule,
-    WithdrawsModule,
-    UploadsModule,
-    SettingsModule,
-    CouponsModule,
+    // AnalyticsModule,
+    // AttributesModule,
+    // ShippingsModule,
+    // TaxesModule,
+    // TagsModule,
+    // ShopsModule,
+    // TypesModule,
+    // WithdrawsModule,
+    // UploadsModule,
+    // SettingsModule,
+    // CouponsModule,
     AddressesModule,
-    ImportsModule,
+    // ImportsModule,
     AuthModule,
-    RefundsModule,
-    AuthorsModule,
-    ManufacturersModule,
-    NewslettersModule,
-    ReviewModule,
-    QuestionModule,
-    WishlistsModule,
-    ReportsModule,
-    FeedbackModule,
+    // RefundsModule,
+    // AuthorsModule,
+    // ManufacturersModule,
+    // NewslettersModule,
+    // ReviewModule,
+    // QuestionModule,
+    // WishlistsModule,
+    // ReportsModule,
+    // FeedbackModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'mobile-shops.clydu5omvg4l.ap-south-1.rds.amazonaws.com',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres123$%^',
-      database: 'postgres',
-      entities: [Product],
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT),
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
+      entities: [Product, Address, Order, OrderDetails, Category],
       synchronize: true,
     }),
   ],
