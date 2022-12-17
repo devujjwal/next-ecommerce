@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Grocery",
+    "name": "Mobiles",
     "settings": {
       "isHome": true,
       "layoutType": "classic",
@@ -46,8 +46,8 @@
       {
         "id": 12,
         "type_id": 1,
-        "title": "Groceries Delivered in 90 Minute",
-        "description": "Get your healthy foods & snacks delivered at your doorsteps all day everyday",
+        "title": "Best Mobiles from every brands",
+        "description": "get best deals from major brands",
         "image": {
           "id": 907,
           "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/904/grocery.png",

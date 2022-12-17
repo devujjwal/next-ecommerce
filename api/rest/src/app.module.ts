@@ -31,7 +31,6 @@ import { QuestionModule } from './questions/questions.module';
 import { WishlistsModule } from './wishlists/wishlists.module';
 import { ReportsModule } from './reports/reports.module';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
-
 import { Product } from './db/entity/product.entity';
 import { OrderDetails } from './db/entity/order-details.entity';
 import { Address } from './db/entity/address.entity';

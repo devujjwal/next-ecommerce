@@ -7,6 +7,9 @@ import ProductGridHome from '@/components/products/grids/home';
 import type { HomePageProps } from '@/types';
 
 export default function ClassicLayout({ variables }: HomePageProps) {
+
+  console.log("Variables ===>", variables)
+
   return (
     <>
       <Banner layout="classic" variables={variables.types} />
