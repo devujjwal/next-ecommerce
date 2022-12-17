@@ -27,6 +27,8 @@ import { QuestionModule } from './questions/questions.module';
 import { WishlistsModule } from './wishlists/wishlists.module';
 import { ReportsModule } from './reports/reports.module';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Product } from './products/entities/product.entity';
 @Module({
   imports: [
     UsersModule,
@@ -57,6 +59,16 @@ import { FeedbackModule } from './feedbacks/feedbacks.module';
     WishlistsModule,
     ReportsModule,
     FeedbackModule,
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'mobile-shops.clydu5omvg4l.ap-south-1.rds.amazonaws.com',
+      port: 5432,
+      username: 'postgres',
+      password: 'postgres123$%^',
+      database: 'postgres',
+      entities: [Product],
+      synchronize: true,
+    }),
   ],
   controllers: [],
   providers: [],
