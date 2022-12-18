@@ -8,7 +8,7 @@ import {
   OrderStatusController,
 } from './orders.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Order } from 'src/db/entity/order.entity';
+import { Order } from './entities/order.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Order])],

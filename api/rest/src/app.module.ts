@@ -1,8 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
-import { ConfigModule } from '@nestjs/config';
 
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
@@ -75,7 +73,7 @@ import { Category } from './categories/entities/category.entity';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Address, Order, Category],
+      entities: [Product, Address, Order, Category],
       synchronize: true,
     }),
   ],

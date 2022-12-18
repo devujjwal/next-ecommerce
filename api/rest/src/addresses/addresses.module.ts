@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AddressesService } from './addresses.service';
 import { AddressesController } from './addresses.controller';
-import { Address } from '../db/entity/address.entity';
+import { Address } from './entities/address.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Address])],

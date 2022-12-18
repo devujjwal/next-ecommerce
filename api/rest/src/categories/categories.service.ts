@@ -9,7 +9,7 @@ import { GetCategoriesDto } from './dto/get-categories.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 
 import { Category } from './entities/category.entity';
-import { Category as CategoryEntity } from '../db/entity/category.entity';
+import { Category as CategoryEntity } from './entities/category.entity';
 
 import categoriesJson from '@db/categories.json';
 import { paginate } from 'src/common/pagination/paginate';

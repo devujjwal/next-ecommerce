@@ -24,13 +24,12 @@ export class Product extends CoreEntity {
   name: string;
   @Column()
   slug: string;
-  @Column('json')
   type: Type;
   @Column()
   type_id: number;
   @Column()
   product_type: ProductType;
-  @Column('int', { array: true })
+  @Column('json')
   categories: Category[];
   tags?: Tag[];
   variations?: AttributeValue[];

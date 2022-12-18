@@ -24,8 +24,6 @@ import Fuse from 'fuse.js';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { Order as OrderEntity } from '../db/entity/order.entity';
-
 const orders = plainToClass(Order, ordersJson);
 const orderStatus = plainToClass(OrderStatus, orderStatusJson);
 
@@ -40,8 +38,8 @@ const orderFiles = plainToClass(OrderFiles, orderFilesJson);
 @Injectable()
 export class OrdersService {
   constructor(
-    @InjectRepository(OrderEntity)
-    private ordersRepository: Repository<OrderEntity>,
+    @InjectRepository(Order)
+    private ordersRepository: Repository<Order>,
   ) {}
   private orders: Order[] = orders;
   private orderStatus: OrderStatus[] = orderStatus;

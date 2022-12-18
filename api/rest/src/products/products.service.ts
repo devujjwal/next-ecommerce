@@ -11,7 +11,6 @@ import { GetPopularProductsDto } from './dto/get-popular-products.dto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
-
 const products = plainToClass(Product, productsJson);
 
 const options = {
@@ -76,6 +75,10 @@ export class ProductsService {
       data: results,
       ...paginate(data.length, page, limit, results.length, url),
     };
+  }
+
+  async getProductBySlug(slug: string): Promise<Product> {
+    return await this.productRepository.findOneBy({ slug });
   }
 
   getPopularProducts({ limit, type_slug }: GetPopularProductsDto): Product[] {
