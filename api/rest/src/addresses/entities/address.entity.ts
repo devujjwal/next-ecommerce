@@ -19,12 +19,11 @@ export class UserAddress {
 export class Address extends CoreEntity {
   @Column()
   title: string;
-  @Column()
   default: boolean;
   @Column('json')
   address: UserAddress;
   @Column()
   type: AddressType;
   @Column('int')
-  customer: User;
+  customer: number;
 }

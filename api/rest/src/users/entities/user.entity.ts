@@ -19,6 +19,7 @@ export class User extends CoreEntity {
   managed_shop?: Shop;
   @Column()
   is_active?: boolean = true;
+  @Column('json')
   address?: Address[];
   // orders?: Order[];
 }

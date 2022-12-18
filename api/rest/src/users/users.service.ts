@@ -8,6 +8,9 @@ import Fuse from 'fuse.js';
 import { User } from './entities/user.entity';
 import usersJson from '@db/users.json';
 import { paginate } from 'src/common/pagination/paginate';
+import { Repository } from 'typeorm';
+import { Address } from '../addresses/entities/address.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 const users = plainToClass(User, usersJson);
 
@@ -19,10 +22,20 @@ const fuse = new Fuse(users, options);
 
 @Injectable()
 export class UsersService {
+  constructor(
+    @InjectRepository(Address)
+    private readonly addressRepository: Repository<Address>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
+  ) {}
   private users: User[] = users;
 
-  create(createUserDto: CreateUserDto) {
-    return this.users[0];
+  async create(createUserDto: CreateUserDto) {
+    const password = '1234@admin';
+    return await this.userRepository.save({
+      ...createUserDto,
+      password,
+    });
   }
 
   async getUsers({
@@ -70,11 +83,17 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return this.users.find((user) => user.id === id);
+    return this.userRepository.findOneBy({ id });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return this.users[0];
+  async update(id: number, updateUserDto: UpdateUserDto) {
+    if (updateUserDto.address) {
+      const address = await this.addressRepository.upsert(
+        { ...updateUserDto.address[0], customer: id },
+        ['id'],
+      );
+    }
+    return;
   }
 
   remove(id: number) {

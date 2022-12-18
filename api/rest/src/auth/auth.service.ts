@@ -18,10 +18,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { plainToClass } from 'class-transformer';
 import { User } from 'src/users/entities/user.entity';
 import usersJson from '@db/users.json';
+import { UsersService } from '../users/users.service';
 const users = plainToClass(User, usersJson);
 
 @Injectable()
 export class AuthService {
+  constructor(private usersService: UsersService) {}
   private users: User[] = users;
   async register(createUserInput: RegisterDto): Promise<AuthResponse> {
     const user: User = {
@@ -134,8 +136,8 @@ export class AuthService {
   // public getUser(getUserArgs: GetUserArgs): User {
   //   return this.users.find((user) => user.id === getUserArgs.id);
   // }
-  me(): User {
-    return this.users[0];
+  async me(): Promise<User> {
+    return await this.usersService.findOne(2);
   }
 
   // updateUser(id: number, updateUserInput: UpdateUserInput) {

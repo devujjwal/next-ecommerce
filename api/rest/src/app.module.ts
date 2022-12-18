@@ -34,6 +34,7 @@ import { Product } from './products/entities/product.entity';
 import { Address } from './addresses/entities/address.entity';
 import { Order } from './orders/entities/order.entity';
 import { Category } from './categories/entities/category.entity';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -73,7 +74,7 @@ import { Category } from './categories/entities/category.entity';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Product, Address, Order, Category],
+      entities: [Product, Address, Order, Category, User],
       synchronize: true,
     }),
   ],
