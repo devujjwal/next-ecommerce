@@ -32,6 +32,7 @@ export class ProductsController {
     return this.productsService.getProducts(query);
   }
 
+  @ApiTags('MOBILE SHOPS')
   @Get(':slug')
   async getProductBySlug(@Param('slug') slug: string): Promise<Product> {
     return this.productsService.getProductBySlug(slug);
