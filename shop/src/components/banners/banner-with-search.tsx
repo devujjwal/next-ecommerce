@@ -14,6 +14,9 @@ interface BannerProps {
 }
 
 const BannerWithSearch: React.FC<BannerProps> = ({ banners, layout }) => {
+
+  console.log(banners)
+
   const { showHeaderSearch, hideHeaderSearch } = useHeaderSearch();
   const intersectionRef = useRef(null);
   const intersection = useIntersection(intersectionRef, {

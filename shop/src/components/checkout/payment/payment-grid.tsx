@@ -28,12 +28,12 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
     PaymentMethodName,
     PaymentMethodInformation
   > = {
-    STRIPE: {
-      name: 'Stripe',
-      value: 'STRIPE',
-      icon: '/payment/stripe.png',
-      component: StripePayment,
-    },
+    // STRIPE: {
+    //   name: 'Stripe',
+    //   value: 'STRIPE',
+    //   icon: '/payment/stripe.png',
+    //   component: StripePayment,
+    // },
     CASH_ON_DELIVERY: {
       name: t('text-cash-on-delivery'),
       value: 'CASH_ON_DELIVERY',
