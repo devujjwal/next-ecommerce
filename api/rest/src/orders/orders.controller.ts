@@ -15,18 +15,20 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 import { GetOrdersDto, OrderPaginator } from './dto/get-orders.dto';
 import { CreateOrderStatusDto } from './dto/create-order-status.dto';
 import { GetOrderStatusesDto } from './dto/get-order-statuses.dto';
-import { CheckoutVerificationDto } from './dto/verify-checkout.dto';
 import { GetOrderFilesDto, OrderFilesPaginator } from './dto/get-downloads.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
+  @ApiTags('MOBILE SHOPS')
   @Post()
   create(@Body() createOrderDto: CreateOrderDto) {
     return this.ordersService.create(createOrderDto);
   }
 
+  @ApiTags('MOBILE SHOPS')
   @Get()
   async getOrders(@Query() query: GetOrdersDto): Promise<OrderPaginator> {
     return this.ordersService.getOrders(query);
@@ -53,7 +55,7 @@ export class OrdersController {
   }
 
   @Post('checkout/verify')
-  verifyCheckout(@Query() query: CheckoutVerificationDto) {
+  verifyCheckout(@Query() query) {
     return this.ordersService.verifyCheckout(query);
   }
 }
