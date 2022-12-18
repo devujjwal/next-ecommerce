@@ -6,6 +6,7 @@ import { Order } from 'src/orders/entities/order.entity';
 import { Shop } from 'src/shops/entities/shop.entity';
 import { Tag } from 'src/tags/entities/tag.entity';
 import { Type } from 'src/types/entities/type.entity';
+import { Column, Entity } from 'typeorm';
 import { Review } from '../../reviews/entities/review.entity';
 
 enum ProductStatus {
@@ -17,13 +18,19 @@ enum ProductType {
   SIMPLE = 'simple',
   VARIABLE = 'variable',
 }
-
+@Entity()
 export class Product extends CoreEntity {
+  @Column()
   name: string;
+  @Column()
   slug: string;
+  @Column('int')
   type: Type;
+  @Column()
   type_id: number;
+  @Column()
   product_type: ProductType;
+  @Column('int', { array: true })
   categories: Category[];
   tags?: Tag[];
   variations?: AttributeValue[];
@@ -33,19 +40,26 @@ export class Product extends CoreEntity {
   shop: Shop;
   shop_id: number;
   related_products?: Product[];
+  @Column()
   description: string;
+  @Column()
   in_stock: boolean;
+  @Column()
   is_taxable: boolean;
   sale_price?: number;
   max_price?: number;
   min_price?: number;
+  @Column()
   sku?: string;
+  @Column('int', { array: true })
   gallery?: Attachment[];
+  @Column('int')
   image?: Attachment;
   status: ProductStatus;
   height?: string;
   length?: string;
   width?: string;
+  @Column()
   price?: number;
   quantity: number;
   unit: string;

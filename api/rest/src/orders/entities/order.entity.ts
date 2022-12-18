@@ -4,6 +4,7 @@ import { Coupon } from 'src/coupons/entities/coupon.entity';
 import { File, Product } from 'src/products/entities/product.entity';
 import { Shop } from 'src/shops/entities/shop.entity';
 import { User } from 'src/users/entities/user.entity';
+import { Column, Entity } from 'typeorm';
 import { OrderStatus } from './order-status.entity';
 
 export enum PaymentGatewayType {
@@ -11,23 +12,34 @@ export enum PaymentGatewayType {
   CASH_ON_DELIVERY = 'cod',
 }
 
+@Entity()
 export class Order extends CoreEntity {
   tracking_number: string;
+
+  @Column()
   customer_id: number;
+  @Column()
   customer_contact: string;
   customer: User;
   parent_order?: Order;
   children: Order[];
+  @Column('int')
   status: OrderStatus;
+  @Column()
   amount: number;
   sales_tax: number;
+  @Column()
   total: number;
+  @Column()
   paid_total: number;
   payment_id?: string;
   payment_gateway: PaymentGatewayType;
+  @Column('int')
   coupon?: Coupon;
   shop: Shop;
+  @Column()
   discount?: number;
+  @Column()
   delivery_fee: number;
   delivery_time: string;
   products: Product[];

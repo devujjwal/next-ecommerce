@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
 import { ProductsModule } from './products/products.module';
@@ -29,8 +30,12 @@ import { ReportsModule } from './reports/reports.module';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './products/entities/product.entity';
+import { Address } from './addresses/entities/address.entity';
+import { Order } from './orders/entities/order.entity';
+import { Category } from './categories/entities/category.entity';
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     UsersModule,
     CommonModule,
     ProductsModule,
@@ -61,12 +66,12 @@ import { Product } from './products/entities/product.entity';
     FeedbackModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'mobile-shops.clydu5omvg4l.ap-south-1.rds.amazonaws.com',
-      port: 5432,
-      username: 'postgres',
-      password: 'postgres123$%^',
-      database: 'postgres',
-      entities: [Product],
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT),
+      username: process.env.DATABASE_USERNAME,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME,
+      entities: [Product, Address, Order, Category],
       synchronize: true,
     }),
   ],
