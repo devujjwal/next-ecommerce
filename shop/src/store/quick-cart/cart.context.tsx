@@ -86,5 +86,6 @@ export const CartProvider: React.FC = (props) => {
     }),
     [getItemFromCart, isInCart, isInStock, state]
   );
+
   return <cartContext.Provider value={value} {...props} />;
 };

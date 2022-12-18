@@ -17,7 +17,9 @@ const nextConfig = {
       'localhost',
       '127.0.0.1',
       'i.pravatar.cc',
-      'img5.gadgetsnow.com'
+      'img5.gadgetsnow.com',
+      'ibb.co',
+      'i.ibb.co'
     ],
   },
   ...(process.env.FRAMEWORK_PROVIDER === 'graphql' && {

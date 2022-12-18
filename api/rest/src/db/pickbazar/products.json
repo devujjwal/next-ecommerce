@@ -178,28 +178,18 @@
       "promotional_sliders": [
         {
           "id": "902",
-          "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/902/offer-5.png",
-          "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/902/conversions/offer-5-thumbnail.jpg"
+          "original": "https://i.ibb.co/XSHq63j/Express-Delivery.png",
+          "thumbnail": "https://i.ibb.co/XSHq63j/Express-Delivery.png"
         },
         {
           "id": "903",
-          "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/903/offer-4.png",
-          "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/903/conversions/offer-4-thumbnail.jpg"
+          "original": "https://i.ibb.co/ZSSytK4/Cashondelivery.png",
+          "thumbnail": "https://i.ibb.co/ZSSytK4/Cashondelivery.png"
         },
         {
           "id": "904",
-          "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/904/offer-3.png",
-          "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/904/conversions/offer-3-thumbnail.jpg"
-        },
-        {
-          "id": "905",
-          "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/905/offer-2.png",
-          "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/905/conversions/offer-2-thumbnail.jpg"
-        },
-        {
-          "id": "906",
-          "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/906/offer-1.png",
-          "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/906/conversions/offer-1-thumbnail.jpg"
+          "original": "https://i.ibb.co/NZmHyJ4/Coupon-Savings.png",
+          "thumbnail": "https://i.ibb.co/NZmHyJ4/Coupon-Savings.png"
         }
       ],
       "created_at": "2021-03-08T07:18:25.000000Z",
@@ -214,199 +204,5 @@
     "variation_options": [],
     "tags": [],
     "author": null
-  },
-  {
-    "id": 949,
-    "name": "Combo banner three",
-    "slug": "combo-banner-three",
-    "description": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
-    "type_id": 8,
-    "price": 18,
-    "shop_id": 7,
-    "sale_price": null,
-    "language": "en",
-    "min_price": 18,
-    "max_price": 18,
-    "sku": "sku-combo-05",
-    "quantity": 100,
-    "in_stock": 1,
-    "is_taxable": 0,
-    "shipping_class_id": null,
-    "status": "publish",
-    "product_type": "simple",
-    "unit": "1Stk",
-    "height": "",
-    "width": "",
-    "length": "",
-    "image": {
-      "id": "1687",
-      "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1687/Combo_banner_03.png",
-      "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1687/conversions/Combo_banner_03-thumbnail.jpg"
-    },
-    "video": null,
-    "gallery": [],
-    "deleted_at": null,
-    "created_at": "2021-01-06T09:16:06.000000Z",
-    "updated_at": "2022-07-06T08:04:14.000000Z",
-    "author_id": 6,
-    "manufacturer_id": 5,
-    "is_digital": 1,
-    "is_external": 0,
-    "external_product_url": null,
-    "external_product_button_text": null,
-    "ratings": 0,
-    "total_reviews": 0,
-    "rating_count": [],
-    "my_review": null,
-    "in_wishlist": false,
-    "blocked_dates": [],
-    "translated_languages": [
-      "en"
-    ],
-    "categories": [],
-    "shop": {
-      "id": 7,
-      "owner_id": 1,
-      "name": "Books Shop",
-      "slug": "books-shop",
-      "description": "This is the book shop. All the publications sells their book under this book shop",
-      "cover_image": {
-        "id": 1374,
-        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1374/Cover.png",
-        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1374/conversions/Cover-thumbnail.jpg"
-      },
-      "logo": {
-        "id": 1613,
-        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1613/Publisher-logo.png",
-        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1613/conversions/Publisher-logo-thumbnail.jpg"
-      },
-      "is_active": 1,
-      "address": {
-        "zip": "8021",
-        "city": "zurich",
-        "state": "California",
-        "country": "Switzerland",
-        "street_address": "44444"
-      },
-      "settings": {
-        "contact": "0799302967",
-        "socials": [],
-        "website": null,
-        "location": []
-      },
-      "created_at": "2021-12-07T16:47:07.000000Z",
-      "updated_at": "2021-12-26T09:48:16.000000Z"
-    },
-    "type": {
-      "id": 8,
-      "name": "Books",
-      "settings": {
-        "isHome": false,
-        "layoutType": "compact",
-        "productCard": "radon"
-      },
-      "slug": "books",
-      "language": "en",
-      "icon": "BookIcon",
-      "promotional_sliders": [],
-      "created_at": "2021-12-07T16:30:18.000000Z",
-      "updated_at": "2021-12-08T13:06:56.000000Z",
-      "translated_languages": [
-        "en"
-      ]
-    },
-    "variations": [],
-    "manufacturer": {
-      "id": 5,
-      "name": "Poppy Publication",
-      "is_approved": 1,
-      "image": {
-        "id": 1406,
-        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1406/Publisher-logo-5.png",
-        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1406/conversions/Publisher-logo-5-thumbnail.jpg"
-      },
-      "cover_image": {
-        "id": 1394,
-        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1394/Publisher-banner-5.png",
-        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1394/conversions/Publisher-banner-5-thumbnail.jpg"
-      },
-      "slug": "poppy-publication",
-      "language": "en",
-      "type_id": 8,
-      "description": "To publish is to make content available to the generalpublic.While specific use of the term may vary among countries, it's generally applied to textbook, images, or other audio-visual content, including paper ( journals, magazines, registers,etc.). The word publication means the act of publishing, and also any published clones issued for public distribution.",
-      "website": null,
-      "socials": [
-        {
-          "url": "https://www.youtube.com/channel/UCjld1tyVHRNy_pe3ROLiLhw",
-          "icon": "YouTubeIcon"
-        },
-        {
-          "url": "https://www.instagram.com/redqinc/",
-          "icon": "InstagramIcon"
-        },
-        {
-          "url": "https://www.facebook.com/redqinc/",
-          "icon": "FacebookIcon"
-        }
-      ],
-      "created_at": "2021-12-08T14:23:36.000000Z",
-      "updated_at": "2021-12-14T14:51:34.000000Z",
-      "products_count": 7,
-      "translated_languages": [
-        "en"
-      ]
-    },
-    "variation_options": [],
-    "tags": [
-      {
-        "id": 26,
-        "name": "Combo",
-        "slug": "combo",
-        "language": "en",
-        "icon": "",
-        "image": null,
-        "details": "",
-        "type_id": 8,
-        "created_at": "2022-01-04T16:32:26.000000Z",
-        "updated_at": "2022-01-04T16:37:00.000000Z",
-        "deleted_at": null,
-        "translated_languages": [
-          "en"
-        ],
-        "pivot": {
-          "product_id": 949,
-          "tag_id": 26
-        }
-      }
-    ],
-    "author": {
-      "id": 6,
-      "name": "Kelton Benjamin",
-      "is_approved": 1,
-      "image": {
-        "id": 1603,
-        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1603/Author-img-800-%284%29.jpg",
-        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1603/conversions/Author-img-800-%284%29-thumbnail.jpg"
-      },
-      "cover_image": {
-        "id": 1603,
-        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1603/Author-img-800-%284%29.jpg",
-        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1603/conversions/Author-img-800-%284%29-thumbnail.jpg"
-      },
-      "slug": "kelton-benjamin",
-      "language": "en",
-      "bio": "An author is the creator or originator of any written work similar as a book or play, and is also considered a pen or minstrel. More astronomically defined, an author is\"the person who began or gave actuality to anything\"and whose authorship determines responsibility for what was created.",
-      "quote": "All writers are vain, selfish and lazy, and at the very bottom of their motives lies a mystery. Writing a book is a long, exhausting struggle, like a long bout of some painful illness. One would never undertake such a thing if one were not driven by some demon whom one can neither resist nor understand",
-      "born": "1975-02-15T18:00:00.000Z",
-      "death": null,
-      "languages": "English",
-      "socials": [],
-      "created_at": "2021-12-09T16:21:37.000000Z",
-      "updated_at": "2021-12-20T08:55:44.000000Z",
-      "products_count": 6,
-      "translated_languages": [
-        "en"
-      ]
-    }
   }
 ]
