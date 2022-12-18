@@ -1,10 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import Fuse from 'fuse.js';
+
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { GetCategoriesDto } from './dto/get-categories.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+
 import { Category } from './entities/category.entity';
-import Fuse from 'fuse.js';
+import { Category as CategoryEntity } from '../db/entity/category.entity';
+
 import categoriesJson from '@db/categories.json';
 import { paginate } from 'src/common/pagination/paginate';
 
@@ -17,10 +23,15 @@ const fuse = new Fuse(categories, options);
 
 @Injectable()
 export class CategoriesService {
+  constructor(
+    @InjectRepository(CategoryEntity)
+    private categoryRepository: Repository<CategoryEntity>,
+  ) {}
+
   private categories: Category[] = categories;
 
   create(createCategoryDto: CreateCategoryDto) {
-    return this.categories[0];
+    return this.categoryRepository.save(createCategoryDto);
   }
 
   getCategories({ limit, page, search, parent }: GetCategoriesDto) {

@@ -16,15 +16,15 @@ import {
   OrderStatusPaginator,
 } from './dto/get-order-statuses.dto';
 import {
-  CheckoutVerificationDto,
-  VerifiedCheckoutData,
-} from './dto/verify-checkout.dto';
-import {
   CreateOrderStatusDto,
   UpdateOrderStatusDto,
 } from './dto/create-order-status.dto';
 import { GetOrderFilesDto } from './dto/get-downloads.dto';
 import Fuse from 'fuse.js';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+
+import { Order as OrderEntity } from '../db/entity/order.entity';
 
 const orders = plainToClass(Order, ordersJson);
 const orderStatus = plainToClass(OrderStatus, orderStatusJson);
@@ -39,12 +39,16 @@ const orderFiles = plainToClass(OrderFiles, orderFilesJson);
 
 @Injectable()
 export class OrdersService {
+  constructor(
+    @InjectRepository(OrderEntity)
+    private ordersRepository: Repository<OrderEntity>,
+  ) {}
   private orders: Order[] = orders;
   private orderStatus: OrderStatus[] = orderStatus;
   private orderFiles: OrderFiles[] = orderFiles;
 
-  create(createOrderInput: CreateOrderDto) {
-    return this.orders[0];
+  async create(createOrderInput: CreateOrderDto) {
+    return this.ordersRepository.save(createOrderInput);
   }
 
   getOrders({
@@ -147,7 +151,7 @@ export class OrdersService {
     return `This action removes a #${id} order`;
   }
 
-  verifyCheckout(input: CheckoutVerificationDto): VerifiedCheckoutData {
+  verifyCheckout(input) {
     return {
       total_tax: 0,
       shipping_charge: 0,

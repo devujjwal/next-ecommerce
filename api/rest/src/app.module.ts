@@ -2,6 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
+import { ConfigModule } from '@nestjs/config';
+
+import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
 import { CategoriesModule } from './categories/categories.module';
@@ -33,6 +36,7 @@ import { Product } from './products/entities/product.entity';
 import { Address } from './addresses/entities/address.entity';
 import { Order } from './orders/entities/order.entity';
 import { Category } from './categories/entities/category.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
