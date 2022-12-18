@@ -8,6 +8,8 @@ import { paginate } from 'src/common/pagination/paginate';
 import productsJson from '@db/products.json';
 import Fuse from 'fuse.js';
 import { GetPopularProductsDto } from './dto/get-popular-products.dto';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 const products = plainToClass(Product, productsJson);
 
@@ -28,18 +30,25 @@ const fuse = new Fuse(products, options);
 
 @Injectable()
 export class ProductsService {
+  constructor(
+    @InjectRepository(Product) private productRepository: Repository<Product>,
+  ) {}
   private products: any = products;
 
   create(createProductDto: CreateProductDto) {
-    return this.products[0];
+    return this.productRepository.save(createProductDto);
   }
 
-  getProducts({ limit, page, search }: GetProductsDto): ProductPaginator {
+  async getProducts({
+    limit,
+    page,
+    search,
+  }: GetProductsDto): Promise<ProductPaginator> {
     if (!page) page = 1;
     if (!limit) limit = 30;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    let data: Product[] = this.products;
+    let data: Product[] = await this.productRepository.find();
     if (search) {
       const parseSearchParams = search.split(';');
       const searchText: any = [];
@@ -68,15 +77,15 @@ export class ProductsService {
     };
   }
 
-  getProductBySlug(slug: string): Product {
-    const product = this.products.find((p) => p.slug === slug);
-    const related_products = this.products
-      .filter((p) => p.type.slug === product.type.slug)
-      .slice(0, 20);
-    return {
-      ...product,
-      related_products,
-    };
+  async getProductBySlug(slug: string): Promise<Product> {
+    return await this.productRepository.findOneBy({ slug });
+    // const related_products = this.products
+    //   .filter((p) => p.type.slug === product.type.slug)
+    //   .slice(0, 20);
+    // return {
+    //   ...product,
+    //   related_products,
+    // };
   }
 
   getPopularProducts({ limit, type_slug }: GetPopularProductsDto): Product[] {

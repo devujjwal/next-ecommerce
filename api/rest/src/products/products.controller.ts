@@ -14,21 +14,25 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { GetProductsDto, ProductPaginator } from './dto/get-products.dto';
 import { Product } from './entities/product.entity';
 import { GetPopularProductsDto } from './dto/get-popular-products.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
+  @ApiTags('MOBILE SHOPS')
   @Post()
   createProduct(@Body() createProductDto: CreateProductDto) {
     return this.productsService.create(createProductDto);
   }
 
+  @ApiTags('MOBILE SHOPS')
   @Get()
   async getProducts(@Query() query: GetProductsDto): Promise<ProductPaginator> {
     return this.productsService.getProducts(query);
   }
 
+  @ApiTags('MOBILE SHOPS')
   @Get(':slug')
   async getProductBySlug(@Param('slug') slug: string): Promise<Product> {
     return this.productsService.getProductBySlug(slug);

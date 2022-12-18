@@ -24,7 +24,7 @@ export class Product extends CoreEntity {
   name: string;
   @Column()
   slug: string;
-  @Column('int')
+  @Column('json')
   type: Type;
   @Column()
   type_id: number;
@@ -51,9 +51,9 @@ export class Product extends CoreEntity {
   min_price?: number;
   @Column()
   sku?: string;
-  @Column('int', { array: true })
+  @Column('json')
   gallery?: Attachment[];
-  @Column('int')
+  @Column('json')
   image?: Attachment;
   status: ProductStatus;
   height?: string;

@@ -3,19 +3,15 @@ import { Product } from '../entities/product.entity';
 
 export class CreateProductDto extends OmitType(Product, [
   'id',
-  'slug',
+  // 'slug',
   'created_at',
   'updated_at',
   'orders',
   'pivot',
   'shop',
-  'categories',
   'tags',
   'type',
   'related_products',
-  // 'variation_options',
+  'variation_options',
   'translated_languages',
-]) {
-  categories: number[];
-  tags: number[];
-}
+]) {}
