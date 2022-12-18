@@ -19,7 +19,8 @@ const nextConfig = {
       'i.pravatar.cc',
       'img5.gadgetsnow.com',
       'ibb.co',
-      'i.ibb.co'
+      'i.ibb.co',
+      'images.bluefinmobileshop.com'
     ],
   },
   ...(process.env.FRAMEWORK_PROVIDER === 'graphql' && {

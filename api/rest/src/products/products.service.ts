@@ -49,25 +49,25 @@ export class ProductsService {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     let data: Product[] = await this.productRepository.find();
-    if (search) {
-      const parseSearchParams = search.split(';');
-      const searchText: any = [];
-      for (const searchParam of parseSearchParams) {
-        const [key, value] = searchParam.split(':');
-        // TODO: Temp Solution
-        if (key !== 'slug') {
-          searchText.push({
-            [key]: value,
-          });
-        }
-      }
+    // if (search) {
+    //   const parseSearchParams = search.split(';');
+    //   const searchText: any = [];
+    //   for (const searchParam of parseSearchParams) {
+    //     const [key, value] = searchParam.split(':');
+    //     // TODO: Temp Solution
+    //     if (key !== 'slug') {
+    //       searchText.push({
+    //         [key]: value,
+    //       });
+    //     }
+    //   }
 
-      data = fuse
-        .search({
-          $and: searchText,
-        })
-        ?.map(({ item }) => item);
-    }
+    //   data = fuse
+    //     .search({
+    //       $and: searchText,
+    //     })
+    //     ?.map(({ item }) => item);
+    // }
 
     const results = data.slice(startIndex, endIndex);
     const url = `/products?search=${search}&limit=${limit}`;
