@@ -25,12 +25,12 @@ export class Order extends CoreEntity {
   children: Order[];
   @Column('int')
   status: OrderStatus;
-  @Column()
+  @Column('decimal')
   amount: number;
   sales_tax: number;
-  @Column()
+  @Column('decimal')
   total: number;
-  @Column()
+  @Column('decimal')
   paid_total: number;
   payment_id?: string;
   payment_gateway: PaymentGatewayType;
