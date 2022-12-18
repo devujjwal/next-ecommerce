@@ -18,7 +18,7 @@ export class Order extends CoreEntity {
 
   @Column()
   customer_id: number;
-  @Column()
+  @Column({ nullable: true })
   customer_contact: string;
   customer: User;
   parent_order?: Order;
@@ -34,12 +34,12 @@ export class Order extends CoreEntity {
   paid_total: number;
   payment_id?: string;
   payment_gateway: PaymentGatewayType;
-  @Column('int')
+  @Column({ type: 'int', nullable: true })
   coupon?: Coupon;
   shop: Shop;
-  @Column()
+  @Column({ type: 'int', nullable: true })
   discount?: number;
-  @Column()
+  @Column({ type: 'int', nullable: true })
   delivery_fee: number;
   delivery_time: string;
   products: Product[];

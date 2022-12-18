@@ -46,7 +46,7 @@ export class OrdersService {
   private orderFiles: OrderFiles[] = orderFiles;
 
   async create(createOrderInput: CreateOrderDto) {
-    return this.ordersRepository.save(createOrderInput);
+    return this.ordersRepository.save({ ...createOrderInput, customer_id: 2 });
   }
 
   getOrders({
