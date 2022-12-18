@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-
-import { CommonModule } from './common/common.module';
 import { ConfigModule } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
@@ -31,43 +30,42 @@ import { QuestionModule } from './questions/questions.module';
 import { WishlistsModule } from './wishlists/wishlists.module';
 import { ReportsModule } from './reports/reports.module';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
-import { Product } from './db/entity/product.entity';
-import { OrderDetails } from './db/entity/order-details.entity';
-import { Address } from './db/entity/address.entity';
-import { Order } from './db/entity/order.entity';
-import { Category } from './db/entity/category.entity';
-
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Product } from './products/entities/product.entity';
+import { Address } from './addresses/entities/address.entity';
+import { Order } from './orders/entities/order.entity';
+import { Category } from './categories/entities/category.entity';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    // UsersModule,
+    UsersModule,
     CommonModule,
     ProductsModule,
     OrdersModule,
     CategoriesModule,
-    // AnalyticsModule,
-    // AttributesModule,
-    // ShippingsModule,
-    // TaxesModule,
-    // TagsModule,
-    // ShopsModule,
-    // TypesModule,
-    // WithdrawsModule,
-    // UploadsModule,
-    // SettingsModule,
-    // CouponsModule,
+    AnalyticsModule,
+    AttributesModule,
+    ShippingsModule,
+    TaxesModule,
+    TagsModule,
+    ShopsModule,
+    TypesModule,
+    WithdrawsModule,
+    UploadsModule,
+    SettingsModule,
+    CouponsModule,
     AddressesModule,
-    // ImportsModule,
+    ImportsModule,
     AuthModule,
-    // RefundsModule,
-    // AuthorsModule,
-    // ManufacturersModule,
-    // NewslettersModule,
-    // ReviewModule,
-    // QuestionModule,
-    // WishlistsModule,
-    // ReportsModule,
-    // FeedbackModule,
+    RefundsModule,
+    AuthorsModule,
+    ManufacturersModule,
+    NewslettersModule,
+    ReviewModule,
+    QuestionModule,
+    WishlistsModule,
+    ReportsModule,
+    FeedbackModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DATABASE_HOST,
@@ -75,7 +73,7 @@ import { Category } from './db/entity/category.entity';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Product, Address, Order, OrderDetails, Category],
+      entities: [Product, Address, Order, Category],
       synchronize: true,
     }),
   ],
